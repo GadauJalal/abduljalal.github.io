@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abduljalal Gadau - Cybersecurity Analyst</title>
+    <style>
+        :root {
+            --background-color: #1a1d24;
+            --text-color: #ffffff;
+            --secondary-text: #cccccc;
+            --accent-color: #27ae60;
+            --card-bg: #1e242c;
+            --icon-bg: #2d343f;
+            --input-bg: #2d343f;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s ease;
+            --heading-color: #ffffff;
+        }
+
+        .light-theme {
+            --background-color: #f5f5f5;
+            --text-color: #333333;
+            --secondary-text: #666666;
+            --accent-color: #27ae60;
+            --card-bg: #ffffff;
+            --icon-bg: #e0e0e0;
+            --input-bg: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --heading-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: row-reverse;
+            padding-right: 80px;
+        }
+
+        .sidebar {
+            width: 80px;
+            background-color: transparent;
+            border-left: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 20px 0;
+        }
+
+        .sidebar-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: var(--icon-bg);
+            color: var(--secondary-text);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-icon:hover, .sidebar-icon.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .sidebar-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .sidebar-icon.active:hover {
+            transform: none;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+        }
+
+        .green-section {
+            width: 35%;
+            background-color: transparent;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .green-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+            background-color: var(--accent-color);
+            transform: skewX(-30deg);
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+        .profile-image:hover {
+            filter: grayscale(0%);
+        }
+
+        .heading {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            line-height: 1.2;
+            color: var(--heading-color);
+        }
+
+        .name {
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .description {
+            color: var(--secondary-text);
+            font-size: 1.1rem;
+            margin: 20px 0;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .download-cv {
+            display: inline-flex;
+            align-items: center;
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .download-cv:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .download-icon {
+            margin-left: 10px;
+        }
+
+        .profile-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-right: 0;
+                padding-bottom: 60px;
+            }
+            
+            .sidebar {
+                position: fixed;
+                bottom: 0;
+                top: auto;
+                width: 100%;
+                height: 70px;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+                background-color: var(--background-color);
+                border-top: 1px solid var(--border-color);
+                transform: none;
+                padding: 0;
+                z-index: 1000;
+            }
+
+            .sidebar-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .main-content {
+                flex-direction: column;
+            }
+
+            .green-section {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .profile-section {
+                padding: 20px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .green-section::before {
+                left: 0;
+                transform: none;
+                width: 100%;
+            }
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-color);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-icon">
+                <i class="fas fa-adjust"></i>
+            </div>
+            <div class="sidebar-icon active">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="sidebar-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="sidebar-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="sidebar-icon">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="sidebar-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="green-section">
+                <div class="profile-image-container">
+                    <img src="IMG-20220326-WA0021.jpg" alt="Abduljalal Gadau" class="profile-image">
+                </div>
+            </div>
+            <div class="profile-section">
+                <h1 class="heading">Hi, I'm<br>
+                    <span class="name">Abduljalal<br>Gadau.</span> A Cybersecurity<br>Analyst.</h1>
+                <p class="description">I'm a passionate Cybersecurity Analyst specializing in network security solutions, vulnerability assessment, and digital forensics.I combine technical expertise with a deep understanding of cybersecurity principles to protect digital assets and infrastructure.</p>
+            
+                <a href="#" class="download-cv">
+                    Download CV
+                    <i class="fas fa-download download-icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html> 
